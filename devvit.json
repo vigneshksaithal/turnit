@@ -18,8 +18,8 @@
   "menu": {
     "items": [
       {
-        "label": "Create a new post",
-        "description": "Svelte",
+        "label": "Create a new Turn It",
+        "description": "Turn It",
         "location": "subreddit",
         "forUserType": "moderator",
         "endpoint": "/internal/menu/post-create"
@@ -30,6 +30,6 @@
     "onAppInstall": "/internal/on-app-install"
   },
   "dev": {
-    "subreddit": "cat543"
+    "subreddit": "turnit"
   }
 }
