@@ -1,13 +1,17 @@
 {
   "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
-  "name": "delete23423",
+  "name": "unlock-game",
   "post": {
     "dir": "dist/client",
     "entrypoints": {
       "default": {
-        "entry": "src/client/index.html",
-        "height": "tall",
+        "entry": "splash.html",
+        "height": "regular",
         "inline": true
+      },
+      "game": {
+        "entry": "index.html",
+        "height": "tall"
       }
     }
   },
@@ -18,8 +22,8 @@
   "menu": {
     "items": [
       {
-        "label": "Create a new Turn It",
-        "description": "Turn It",
+        "label": "Create a TurnIt puzzle",
+        "description": "Create a new word lock puzzle",
         "location": "subreddit",
         "forUserType": "moderator",
         "endpoint": "/internal/menu/post-create"
@@ -28,6 +32,14 @@
   },
   "triggers": {
     "onAppInstall": "/internal/on-app-install"
+  },
+  "scheduler": {
+    "tasks": {
+      "daily-puzzle": {
+        "endpoint": "/internal/scheduler/daily-puzzle",
+        "cron": "0 12 * * *"
+      }
+    }
   },
   "dev": {
     "subreddit": "turnit"

@@ -7,7 +7,6 @@
     "types": [
       "node"
     ],
-    "rootDir": ".",
     "outDir": "../../dist/types/server",
     "tsBuildInfoFile": "../../dist/types/server/tsconfig.tsbuildinfo",
     "strictNullChecks": true

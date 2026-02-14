@@ -1,9 +1,31 @@
 <script lang="ts">
-	const title = $state('Devvit + Svelte')
+	import TabBar from './components/TabBar.svelte'
+	import PlayView from './views/PlayView.svelte'
+	import LeaderboardView from './views/LeaderboardView.svelte'
+	import CreateView from './views/CreateView.svelte'
+	import ProfileView from './views/ProfileView.svelte'
+
+	type Tab = 'play' | 'leaderboard' | 'create' | 'profile'
+
+	let activeTab = $state<Tab>('play')
+
+	const handleTabChange = (tab: string): void => {
+		activeTab = tab as Tab
+	}
 </script>
 
-<main class="flex min-h-screen min-w-xs items-center justify-center">
-	<div class="mx-auto max-w-5xl px-8 text-center">
-		<h1 class="text-4xl font-bold">{title}</h1>
+<div class="h-full w-full flex flex-col overflow-hidden bg-[var(--color-bg-primary)]">
+	<div class="flex-1 overflow-hidden">
+		{#if activeTab === 'play'}
+			<PlayView />
+		{:else if activeTab === 'leaderboard'}
+			<LeaderboardView />
+		{:else if activeTab === 'create'}
+			<CreateView />
+		{:else if activeTab === 'profile'}
+			<ProfileView />
+		{/if}
 	</div>
-</main>
+
+	<TabBar {activeTab} onTabChange={handleTabChange} />
+</div>
