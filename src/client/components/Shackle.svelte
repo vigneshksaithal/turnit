@@ -97,7 +97,7 @@
 <div class="relative flex flex-col items-center select-none touch-none">
   <!-- Pull hint text -->
   <div
-    class="absolute -top-8 text-sm font-bold text-[var(--color-accent)] transition-opacity duration-150 pointer-events-none whitespace-nowrap {isDragging ? '' : 'animate-bounce'}"
+    class="absolute -top-10 text-sm font-bold text-[var(--color-accent)] transition-opacity duration-150 pointer-events-none whitespace-nowrap {isDragging ? '' : 'animate-bounce'}"
     style:opacity={dragHintOpacity}
   >
     {hintText}
@@ -105,7 +105,7 @@
 
   <!-- Shackle interactive area -->
   <div
-    class="relative w-full min-h-[60px] flex items-end justify-center {disabled ? 'opacity-50 pointer-events-none' : 'cursor-grab'} {isDragging ? 'cursor-grabbing' : ''}"
+    class="relative w-full min-h-[80px] flex items-end justify-center {disabled ? 'opacity-50 pointer-events-none' : 'cursor-grab'} {isDragging ? 'cursor-grabbing' : ''}"
     style:transform={shackleTransform}
     style:transition={hasTransition || isOpen ? 'transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1)' : isDragging ? 'none' : 'transform 200ms ease-out'}
     role="button"
@@ -117,43 +117,59 @@
     onpointercancel={handlePointerUp}
   >
     <svg
-      viewBox="0 0 120 70"
+      viewBox="0 0 120 100"
       class="w-full h-auto"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <!-- Shackle shadow/depth layer -->
+      <defs>
+        <linearGradient id="shackleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#5a5a6a" />
+          <stop offset="20%" stop-color="#c0c0d0" />
+          <stop offset="50%" stop-color="#9a9aaa" />
+          <stop offset="80%" stop-color="#7a7a8a" />
+          <stop offset="100%" stop-color="#5a5a6a" />
+        </linearGradient>
+        <linearGradient id="shackleVertGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#d0d0e0" />
+          <stop offset="30%" stop-color="#a0a0b0" />
+          <stop offset="100%" stop-color="#6a6a7a" />
+        </linearGradient>
+      </defs>
+      <!-- Shadow layer -->
       <path
-        d="M 22,70 L 22,28 A 38,38 0 0 1 98,28 L 98,70"
-        stroke="var(--color-lock-body)"
-        stroke-width="14"
+        d="M 18,95 L 18,58 A 42,42 0 0 1 102,58 L 102,95"
+        stroke="#3a3a4a"
+        stroke-width="20"
         stroke-linecap="round"
-        opacity="0.4"
+        opacity="0.35"
       />
       <!-- Main shackle body -->
       <path
-        d="M 22,70 L 22,28 A 38,38 0 0 1 98,28 L 98,70"
-        stroke="var(--color-lock-shackle)"
-        stroke-width="12"
+        d="M 18,95 L 18,58 A 42,42 0 0 1 102,58 L 102,95"
+        stroke="url(#shackleVertGrad)"
+        stroke-width="18"
         stroke-linecap="round"
       />
-      <!-- Metallic highlight on left leg -->
+      <!-- Left edge highlight for metallic sheen -->
       <path
-        d="M 19,70 L 19,30 A 38,36 0 0 1 60,12"
-        stroke="var(--color-lock-body-highlight)"
+        d="M 15,95 L 15,60 A 42,42 0 0 1 57,18"
+        stroke="#e0e0f0"
         stroke-width="3"
         stroke-linecap="round"
         opacity="0.5"
       />
-      <!-- Small highlight on arch top -->
+      <!-- Top arch highlight -->
       <path
-        d="M 45,14 A 20,18 0 0 1 75,14"
-        stroke="var(--color-lock-body-highlight)"
-        stroke-width="2"
+        d="M 35,20 A 25,25 0 0 1 85,20"
+        stroke="#c0c0d0"
+        stroke-width="2.5"
         stroke-linecap="round"
-        opacity="0.35"
+        opacity="0.6"
       />
+      <!-- Specular shine spot -->
+      <ellipse cx="32" cy="22" rx="6" ry="4" fill="#ffffff" opacity="0.4" transform="rotate(-30 32 22)" />
     </svg>
   </div>
 </div>
