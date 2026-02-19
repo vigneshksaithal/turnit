@@ -4,15 +4,15 @@
 
 | Command | Purpose |
 |---------|---------|
-| `pnpm install` | Install dependencies (auto-runs build via postinstall) |
-| `pnpm dev` | Start dev server (vite watch + devvit playtest) |
-| `pnpm build` | Production build to dist/ |
-| `pnpm type-check` | TypeScript composite build check (all 3 projects) |
-| `pnpm check` | Svelte-specific type checking (client only) |
-| `pnpm deploy` | Build and upload to Devvit |
-| `pnpm launch` | Full release pipeline (build + deploy + publish) |
+| `bun install` | Install dependencies (auto-runs build via postinstall) |
+| `bun run dev` | Start dev server (vite watch + devvit playtest) |
+| `bun run build` | Production build to dist/ |
+| `bun run type-check` | TypeScript composite build check (all 3 projects) |
+| `bun run check` | Svelte-specific type checking (client only) |
+| `bun run deploy` | Build and upload to Devvit |
+| `bun run launch` | Full release pipeline (build + deploy + publish) |
 
-**Before committing:** `pnpm type-check`
+**Before committing:** `bun run type-check`
 
 ---
 
@@ -37,7 +37,7 @@ src/
 
 Data flow: `User → Svelte → fetch('/api/...') → Hono → Redis/Reddit API → UI`
 
-**Key packages:** Svelte 5.x, Tailwind CSS 4.x, Hono, TypeScript 5.x, Vite 8.x-beta, @devvit/web 0.12.x, pnpm
+**Key packages:** Svelte 5.x, Tailwind CSS 4.x, Hono, TypeScript 5.x, Vite 8.x-beta, @devvit/web 0.12.x, Bun (runtime & package manager)
 
 ---
 
