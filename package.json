@@ -16,7 +16,7 @@
     "test": "npm test"
   },
   "dependencies": {
-    "@devvit/web": "0.12.12",
+    "@devvit/web": "0.12.13",
     "@hono/node-server": "^1.19.9",
     "@tailwindcss/vite": "^4.2.0",
     "devvit": "0.12.12",
